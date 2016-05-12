@@ -47,5 +47,5 @@ void cleanup(void);
 #define LOW  0
 
 #define PUD_OFF  0
-#define PUD_DOWN 1
-#define PUD_UP   2
+#define PUD_UP   1
+#define PUD_DOWN 2

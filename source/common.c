@@ -104,8 +104,8 @@ int get_gpio_number(int channel, unsigned int *gpio, unsigned int *bcm_gpio)
 
     // check channel number is in range
     if ( (gpio_mode == BCM && (channel < 0 || channel > 53))
-      || (gpio_mode == BOARD && (channel < 1 || channel > 26) && rpiinfo.p1_revision != 3)
-      || (gpio_mode == BOARD && (channel < 1 || channel > 40) && rpiinfo.p1_revision == 3) )
+      || (gpio_mode == BOARD && (channel < 1 || channel > 26) && rpiinfo.p1_revision < 3)
+      || (gpio_mode == BOARD && (channel < 1 || channel > 40) && rpiinfo.p1_revision >= 3) )
     {
         PyErr_SetString(PyExc_ValueError, "The channel sent is invalid on a Raspberry Pi");
         return 4;

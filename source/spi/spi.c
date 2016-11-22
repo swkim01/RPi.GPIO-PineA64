@@ -173,7 +173,6 @@ static PyObject* py_xfer(PyObject* self, PyObject* args){
     /* Get length of output data */
     tx_len = PyList_Size(tx_list);
 
-//printf("rx_len=%d\n", rx_len);
     /* Allocate memory for sending */
     uint8_t* tx_buffer;
     uint8_t* rx_buffer;
@@ -188,9 +187,7 @@ static PyObject* py_xfer(PyObject* self, PyObject* args){
     for(i = 0; i < tx_len; i++){
         item = PyList_GetItem(tx_list, i);
         tx_buffer[i] = (uint8_t)PyInt_AsLong(item);
-//        printf("tx[%d]=%02X\n", i, tx_buffer[i]);
     }
-//    tx_buffer[0] = 0xAA;
 
     /* Do the transaction */
     if(spi_xfer(fd, tx_buffer, tx_len, rx_buffer, rx_len) < 0){
@@ -204,7 +201,6 @@ static PyObject* py_xfer(PyObject* self, PyObject* args){
     for(i = 0; i < rx_len; i++){
         item = PyInt_FromLong(rx_buffer[i]);
         PyList_SET_ITEM(rx_list, i, item);
-//        printf("rx[%d]=%02X\n", i, rx_buffer[i]);
     }
 
     /* Do cleanup */

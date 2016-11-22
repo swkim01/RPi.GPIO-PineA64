@@ -42,5 +42,7 @@ setup(name             = 'RPi.GPIO-PineA64',
       keywords         = 'Raspberry Pi GPIO',
       url              = 'http://sourceforge.net/projects/raspberry-gpio-python/',
       classifiers      = classifiers,
-      packages         = ['RPi','RPi.GPIO'],
-      ext_modules      = [Extension('RPi._GPIO', ['source/py_gpio.c', 'source/c_gpio.c', 'source/cpuinfo.c', 'source/event_gpio.c', 'source/soft_pwm.c', 'source/py_pwm.c', 'source/common.c', 'source/constants.c'])])
+      packages         = ['RPi','RPi.GPIO', 'RPi.I2C', 'RPi.SPI'],
+      ext_modules      = [Extension('RPi._GPIO', ['source/py_gpio.c', 'source/c_gpio.c', 'source/cpuinfo.c', 'source/event_gpio.c', 'source/soft_pwm.c', 'source/py_pwm.c', 'source/common.c', 'source/constants.c']), 
+                           Extension('RPi._I2C', ['source/i2c/i2c.c', 'source/i2c/i2c_lib.c']),
+                           Extension('RPi._SPI', ['source/spi/spi.c', 'source/spi/spi_lib.c'])])

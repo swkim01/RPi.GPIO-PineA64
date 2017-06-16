@@ -218,7 +218,7 @@ static struct PyModuleDef module_def = {
 
 PyMODINIT_FUNC
 #if PY_MAJOR_VERSION >= 3
-    PyInit_i2c(void) {
+    PyInit__I2C(void) {
 #else
     init_I2C(void) {
 #endif

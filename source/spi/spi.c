@@ -302,7 +302,7 @@ static struct PyModuleDef module_def = {
 
 PyMODINIT_FUNC
 #if PY_MAJOR_VERSION >= 3
-    PyInit_spi(void) {
+    PyInit__SPI(void) {
 #else
     init_SPI(void) {
 #endif

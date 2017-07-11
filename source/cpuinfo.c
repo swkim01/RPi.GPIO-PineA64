@@ -49,7 +49,9 @@ int get_rpi_info(rpi_info *info)
           strcmp(hardware, "BCM2837") == 0 ) {
          found = 1;
          sscanf(buffer, "Revision	: %s", revision);
-      } else if (strcmp(hardware, "sun50iw1p1") == 0) {
+      } else if (strcmp(hardware, "sun50iw1p1") == 0 ||
+                 strcmp(hardware, "Pine64") == 0 ||
+                 strcmp(hardware, "Pine64+") == 0 ) {
          pinea64_found = 1;
          found = 1;
          sprintf(revision, "000b");

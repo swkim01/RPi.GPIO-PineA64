@@ -121,7 +121,9 @@ static PyObject* py_write(PyObject *self, PyObject* args){
     for(i = 0; i < tx_len; i++){
         item = PyList_GetItem(tx_list, i);
         tx_buffer[i] = (uint8_t)PyInt_AsLong(item);
+#ifdef __DEBUG
         printf("tx[%d]=%02X\n", i, tx_buffer[i]);
+#endif
     }
 
     /* Send data */

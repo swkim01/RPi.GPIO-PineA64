@@ -37,28 +37,29 @@ int get_rpi_info(rpi_info *info)
    int found = 0;
    int len;
 
-   if ((fp = fopen("/proc/cpuinfo", "r")) == NULL)
-      return -1;
-   while(!feof(fp)) {
-      fgets(buffer, sizeof(buffer), fp);
-      sscanf(buffer, "Hardware	: %s", hardware);
-      if (strcmp(hardware, "BCM2708") == 0 ||
-          strcmp(hardware, "BCM2709") == 0 ||
-          strcmp(hardware, "BCM2835") == 0 ||
-          strcmp(hardware, "BCM2836") == 0 ||
-          strcmp(hardware, "BCM2837") == 0 ) {
-         found = 1;
-         sscanf(buffer, "Revision	: %s", revision);
-      } else if (strcmp(hardware, "sun50iw1p1") == 0 ||
-                 strcmp(hardware, "Pine64") == 0 ||
-                 strcmp(hardware, "Pine64+") == 0 ) {
+//   if ((fp = fopen("/proc/cpuinfo", "r")) == NULL)
+//      return -1;
+//   while(!feof(fp)) {
+//      fgets(buffer, sizeof(buffer), fp);
+//      sscanf(buffer, "Hardware	: %s", hardware);
+//      if (strcmp(hardware, "BCM2708") == 0 ||
+//          strcmp(hardware, "BCM2709") == 0 ||
+//          strcmp(hardware, "BCM2835") == 0 ||
+//          strcmp(hardware, "BCM2836") == 0 ||
+//          strcmp(hardware, "BCM2837") == 0 ) {
+//         found = 1;
+//         sscanf(buffer, "Revision	: %s", revision);
+//      } else if (strcmp(hardware, "sun50iw1p1") == 0 ||
+//                 strcmp(hardware, "Pine64") == 0 ||
+//                 strcmp(hardware, "Pine64+") == 0 ) {
          pinea64_found = 1;
          found = 1;
+	 sprintf(hardware, "Pine64");
          sprintf(revision, "000b");
-      } else
-         sscanf(buffer, "Revision	: %s", revision);
-   }
-   fclose(fp);
+//      } else
+//         sscanf(buffer, "Revision	: %s", revision);
+//   }
+//   fclose(fp);
 
    if (!found)
       return -1;

@@ -56,7 +56,7 @@ struct callback
 };
 struct callback *callbacks = NULL;
 
-pthread_t threads;
+static pthread_t threads;
 int event_occurred[54] = { 0 };
 int thread_running = 0;
 int epfd_thread = -1;
@@ -433,7 +433,6 @@ int add_edge_detect(unsigned int gpio, unsigned int edge, int bouncetime)
 // 1 - Edge detection already added
 // 2 - Other error
 {
-    pthread_t threads;
     struct epoll_event ev;
     long t = 0;
     struct gpios *g;

@@ -28,6 +28,10 @@ SOFTWARE.
 #include "constants.h"
 #include "common.h"
 
+#if PY_VERSION_HEX >= 0x03070000 && !defined(PyEval_ThreadsInitialized)
+#define PyEval_ThreadsInitialized() 1
+#endif
+
 static PyObject *rpi_revision; // deprecated
 static PyObject *board_info;
 static int gpio_warnings = 1;

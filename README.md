@@ -10,3 +10,6 @@ Install this package by executing:
 ````
 sudo python setup.py install
 ````
+
+Contributed by
+- [dest4](https://github.com/dest4)
